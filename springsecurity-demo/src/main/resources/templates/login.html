@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body style="text-align: center">
+    <form action="/login" method="post">
+        user:<input name="user" type="text" value="admin" /> <br/>
+        passwd:<input name="password" type="password" value="000000" /><br/>
+        _csrf：<input type="text" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /><br/>
+        jwt_token：<input type="text" name="jwt_token" value="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyaWQ9bGlzaSxyb2xlPWFkbWluLHByaWNlPTM5OCIsImlhdCI6MTY0NjEwNDg3OSwiZXhwIjoxNjQ3ODMyODc5fQ.9DXRgrpFi9lhyaBiodsk82o2KgMmJgl-rHjMoPJP7lFNjXpt_5oZSPVAi7-mHn8UHKiDTi8hqQHJWJYuZBheJw" /><br/>
+        <input type="submit">
+    </form>
+</body>
+</html>

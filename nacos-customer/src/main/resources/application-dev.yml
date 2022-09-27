@@ -1,0 +1,51 @@
+server:
+  port: 9002
+spring:
+  cloud:
+    sentinel:
+      eager: true
+      transport:
+        # 配置Sentinel dashborad地址
+        dashboard: 127.0.0.1:8088
+        port: 8800
+      datasource:
+        - nacos:
+            server-addr: 127.0.0.1:8848
+            data-id: ${spring.application.name}-sentinel
+            group-id: CLUSTER_GROUP
+            data-type: json
+            rule-type: flow
+            namespace: 3ab3edcf-ec35-42cb-aac7-f93313212ffb
+
+
+feign:
+  client:
+    httpclient:
+      enable: true
+    config:
+      default:
+        connectTimeout: 60000            # 连接超时时间
+        readTimeout: 60000
+        loggerLevel: basic
+  sentinel:
+    enabled: true
+  ## 开启压缩
+  compression:
+    request:
+      enabled: true
+      min-request-size: 10               # 开启压缩的阈值，单位字节，默认2048，即是2k，这里为了演示效果设置成10字节
+      mime-types: text/xml,application/xml,application/json
+    response:
+      enabled: true
+
+
+logging:
+  level:
+    com.hexiaofei.nacoscustomer.service.feign: debug
+
+
+userinfo:
+  name: zhangsan
+  age: 20
+  id: 37112212987882
+

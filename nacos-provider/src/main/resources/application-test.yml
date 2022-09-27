@@ -1,0 +1,28 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: nacos-provider
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos-8841:8841,nacos-8842:8842,nacos-8843:8843
+        file-extension: yaml
+        group: CLUSTER_GROUP
+        namespace: 3ab3edcf-ec35-42cb-aac7-f93313212ffb
+    sentinel:
+      eager: true
+      transport:
+        # 配置Sentinel dashborad地址
+        dashboard: localhost:8088
+        port: 88088
+      datasource:
+        - nacos:
+            server-addr: nacos-8841:8841,nacos-8842:8842,nacos-8843:8843
+            data-id: ${spring.application.name}-sentinel
+            group-id: CLUSTER_GROUP
+            data-type: json
+            rule-type: flow
+            namespace: 3ab3edcf-ec35-42cb-aac7-f93313212ffb               # 需要跟nacos配置保持一致
+
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry
+		location="/Users/hexiaofei/Documents/workspaces/testDemo/alibaba-demo/nacos-customer/src/main/config/mbg/mysql-connector-java-5.1.32.jar" />
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<property name="suppressAllComments" value="false" />
+		</commentGenerator>
+
+		<!-- JDBC 连接信息 -->
+		<jdbcConnection
+			driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://192.168.124.100:3306/test_demo?characterEncoding=utf-8"
+			userId="lcyj"
+			password="000000">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<javaModelGenerator targetPackage="com.hexiaofei.pubapi.entity"
+							targetProject="/Users/hexiaofei/Documents/workspaces/testDemo/alibaba-demo/pub-api/src/main/java">
+			<property name="enableSubPackages" value="true"/>
+			<property name="trimStrings" value="true"/>
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="com.hexiaofei.nacoscustomer.dao.mapper"
+						 targetProject="/Users/hexiaofei/Documents/workspaces/testDemo/alibaba-demo/nacos-customer/src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="ANNOTATEDMAPPER"
+							 targetPackage="com.hexiaofei.nacoscustomer.dao.mapper"
+							 targetProject="/Users/hexiaofei/Documents/workspaces/testDemo/alibaba-demo/nacos-customer/src/main/java">
+			<property name="enableSubPackages" value="true"/>
+		</javaClientGenerator>
+
+
+		<!--<table tableName="user_partion" domainObjectName="UserPartion">-->
+			<!--<property name="useActualColumnNames" value="true"/>-->
+		<!--</table>-->
+		<table tableName="employees" domainObjectName="Employees">
+			<property name="useActualColumnNames" value="true"/>
+		</table>
+	</context>
+</generatorConfiguration>

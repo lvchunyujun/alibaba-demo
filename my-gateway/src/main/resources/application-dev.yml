@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+#      - id: route-customer-1
+#        uri: http://127.0.0.1:9001        # 常规方式
+#        predicates:
+#        -  Path=/api/getFlag              # 断言1 注意：Path路径必须要和路由服务路径一致，否则访问不到
+#        -  Query=id,200                         # 断言2 按照断言顺序依次执行
+#        filters:
+#        - StripPrefix=1                   # 截取uri中前n级的前缀
+      - id: route-customer-2
+        uri: lb://nacos-customer          # 常规方式
+        predicates:
+        -  Path=/api/jwt/login.json           # 断言1 注意：Path路径必须要和路由服务路径一致，否则访问不到
+        filters:
+        - StripPrefix=1                   # 截取uri中前n级的前缀
+      - id: route-customer-3
+        uri: lb://nacos-customer          # 常规方式
+        predicates:
+        -  Path=/api/getLoginConfig.json  # 断言1 注意：Path路径必须要和路由服务路径一致，否则访问不到
+        filters:
+        - StripPrefix=1                   # 截取uri中前n级的前缀
+#      - id: lb-route-customer-before
+#        uri: lb://nacos-customer          # 负载方式
+#        predicates:
+#        - Path=/api/getUserinfo
+#        - Before=2022-03-05T10:40:06+08:00[Asia/Shanghai]   # 注意这边使用的是"="，需要增加时区，格式保证正确
+#        filters:
+#        - StripPrefix=1                   # 截取uri中前n级的前缀
+#      - id: route-customer-before
+#        uri: lb://nacos-customer          # 负载方式
+#        predicates:
+#        - Between=2022-03-04T10:33:47.789-07:00[Asia/Shanghai], 2022-03-04T11:30:47.789-07:00[Asia/Shanghai]
+
+
+nacos-customer:                                # Spring.application.name
+  ribbon:
+    NFLoadBalancerRuleClassName: com.hexiaofei.mygateway.balancerRule.MyBalancerRule   # 默认读取的负载策略

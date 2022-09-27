@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: 'jdbc:mysql://127.0.0.1:3306/test_demo?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai'
+    username: 'root'
+    password: '000000'
+    druid:
+      initial-size: 1
+      max-active: 20
+      min-idle: 3
+      max-wait: 6000
+      pool-prepared-statements: false
+      time-between-eviction-runs-millis: 6000
+      min-evictable-idle-time-millis: 6000
+      max-pool-prepared-statement-per-connection-size: 20
+
+
+mybatis:
+  type-aliases-package: com.hexiaofei.pubapi.entity
+  mapper-locations: classpath:/mybatis/mapper/*Mapper.xml

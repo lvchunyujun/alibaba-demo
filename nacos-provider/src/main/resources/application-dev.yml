@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    sentinel:
+      eager: true
+      transport:
+        # 配置Sentinel dashborad地址
+        dashboard: 127.0.0.1:8088
+        port: 8800
+      datasource:
+        - nacos:
+            server-addr: 127.0.0.1:8848
+            data-id: ${spring.application.name}-sentinel
+            group-id: CLUSTER_GROUP
+            data-type: json
+            rule-type: flow
+            namespace: 3ab3edcf-ec35-42cb-aac7-f93313212ffb               # 需要跟nacos配置保持一致
+
+
+logging:
+  level:
+    com.hexiaofei.nacosdemo: debug
+
+
+

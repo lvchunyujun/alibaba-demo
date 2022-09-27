@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: ss-demo
+  security:
+    user:
+      name: 'admin'
+      password: '000000'
+  thymeleaf:
+    prefix: 'classpath:/templates/'          # 默认路径
+
+server:
+  port: 80
+

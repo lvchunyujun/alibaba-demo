@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: nacos-8841:8841,nacos-8842:8842,nacos-8843:8843
+        file-extension: yaml
+        group: CLUSTER_GROUP
+        namespace: 3ab3edcf-ec35-42cb-aac7-f93313212ffb
+        shared-configs[0]:
+          data-id: nacos-customer-datasource.yaml
+          group: CLUSTER_GROUP
+          refresh: true
+        shared-configs[1]:
+          data-id: nacos-customer-redis.yaml
+          group: CLUSTER_GROUP
+          refresh: true
+  
